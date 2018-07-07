@@ -1,11 +1,22 @@
 %h2
   #{@event.name}
-- @event.people.each_with_index do |person, index|
+  - previous_score = nil
+  - index = 0
+  - people_with_current_rank = 1
+- @event.people.sort_by{|p| p.up_by(@event) && p.percentage_change || -1000 }.reverse.each do |person|
+  - up_by = person.try(:up_by, @event)
+  - positive = up_by.to_f > 0 ? 'positive' : 'negative'
   %table
     %tr
+      - if up_by.to_f == previous_score.to_f
+        - people_with_current_rank += 1
+      - else
+        - index += people_with_current_rank
+        - people_with_current_rank = 1
+      - previous_score = up_by
       %td{class: 'ordinal'}= index
       %td{class: "text-left"}=link_to(person.name, person_path(person.id))
-      %td{class: "text-left weight"}=person.up_by(@event)
+      %td{class: "#{positive} text-left weight"}=person.up_by(@event)
   %br
 %br
 %br

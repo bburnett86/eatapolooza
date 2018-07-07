@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  validates :name, presence: true
 
   has_many :checkins
   has_many :user_person_joins

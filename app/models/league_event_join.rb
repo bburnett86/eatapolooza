@@ -1,0 +1,4 @@
+class LeagueEventJoin < ActiveRecord::Base
+  belongs_to :event
+  belongs_to :league
+end

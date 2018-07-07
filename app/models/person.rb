@@ -35,8 +35,7 @@ class Person < ActiveRecord::Base
     people_strings = File.open(file_location).read.split("\n")
     people_strings[1..-1].each do |line|
       attrs = line.split(",")
-      league = League.find_or_create_by(name: attrs[2])
-      person = Person.find_or_create_by(name: attrs[0]).create_with(league_id: league.id)
+      person = Person.find_or_create_by(name: attrs[0])
     end
   end
 end

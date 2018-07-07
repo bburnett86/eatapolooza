@@ -75,10 +75,7 @@ ActiveRecord::Schema.define(version: 20180707215728) do
     t.datetime "updated_at"
     t.decimal  "starting_weight"
     t.decimal  "up_by"
-    t.integer  "league_id"
   end
-
-  add_index "people", ["league_id"], name: "index_people_on_league_id", using: :btree
 
   create_table "user_location_joins", force: true do |t|
     t.integer  "location_id", null: false

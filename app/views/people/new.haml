@@ -10,6 +10,8 @@
     %br
     = f.text_field :weight, { autocomplete: :off, class: "form-control" }
     %br
+    = f.collection_select(:league_id, League.all, :id, :name)
+    %br
     = f.submit class: "btn btn-primary text-uppercase btn-block", value: 'SAVE >'
 %h3
   %a= link_to('< Back', new_checkin_path, class: 'btn btn-default btn-block navbar navbar-fixed-bottom')

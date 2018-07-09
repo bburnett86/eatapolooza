@@ -1,0 +1,19 @@
+%h1{class: 'text-center'}= "Events for #{@league.name}"
+%div{class: 'table-container'}
+  %table{border: 0, class: 'table table-condensed borderless'}
+    %tr
+      %th{class: 'ordinal'}
+      %th{class: 'text-left person-name'} NAME
+    - @league.events.reverse.each do |event|
+      / TODO: add winner here
+      %tr
+        %td{class: 'ordinal'}
+        %td{class: "text-left weight"}=link_to(event.name, league_event_path(@league.id, event.id))
+
+%br
+%br
+%br
+%br
+%br
+  %h3
+    %a= link_to('< Back', leagues_path, class: 'btn btn-default btn-block navbar navbar-fixed-bottom')

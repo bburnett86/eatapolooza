@@ -13,58 +13,79 @@
  *= require_tree .
  *= require_self
  */
+
+
 /*font-family: 'Press Start 2P', cursive;*/
-*{
-  font-family:'Press Start 2P';
-  background-color: black;
-  color: yellow;
+
+* {
+    font-family: 'Press Start 2P';
+    background-color: black;
+    color: yellow;
 }
+
 a {
-  color: white;
+    color: white;
 }
+
 h1 {
-  font-family:'Press Start 2P';
-  color: yellow;
+    font-family: 'Press Start 2P';
+    color: yellow;
 }
+
 h2 {
-  font-family:'Press Start 2P';
-  color: yellow;
+    font-family: 'Press Start 2P';
+    color: yellow;
 }
+
 h3 {
-  font-family:'Press Start 2P';
-  color: yellow;
+    font-family: 'Press Start 2P';
+    color: yellow;
 }
+
 body {
-  background-color: black;
-  font-family:'Press Start 2P';
-  color: yellow;
-  margin: 0
+    background-color: black;
+    font-family: 'Press Start 2P';
+    color: yellow;
+    margin: 0
 }
+
 table {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
 }
+
 .positive {
-  color: white;
+    color: white;
 }
+
 .negative {
-  color: red;
+    color: red;
 }
+
 .table-container {
-  width: 100%;
-  display: inline-block;
+    width: 100%;
+    display: inline-block;
 }
-.borderless td, .borderless th {
-  border: none;
+
+.borderless td,
+.borderless th {
+    border: none;
 }
+
 .ordinal {
-  width: 20px;
+    width: 20px;
 }
+
+.league-name {
+    width: 75px;
+}
+
 .person-name {
-  width: 150px;
+    width: 75px;
 }
+
 .weight {
-  width: 73px;
+    width: 73px;
 }

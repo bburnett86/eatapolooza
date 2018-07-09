@@ -1,8 +1,9 @@
 %h2
-  #{@person.name}
+  #{@person.name}:
+  = link_to(@person.league.name, league_path(@person.league.id))
 - @person.try(:checkin_diffs).each_pair do |event, diffs|
   %table
-    %th= event
+    %th= link_to(event, event_path(Event.find_by(name: event).id))
     -diffs.each do |diff|
       - classname = diff.to_f > 0 ? 'positive' : 'negative'
       %tr

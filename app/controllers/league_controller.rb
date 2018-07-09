@@ -1,2 +1,0 @@
-class LeagueController < ApplicationController
-end

@@ -1,6 +1,6 @@
 class Checkin < ActiveRecord::Base
-  validates :weight, :person_id, :event_id, :user_id, presence: true
-  validates :weight, :person_id, :event_id, :user_id, numericality: true
+  validates :weight, :person_id, :event_id, presence: true
+  validates :weight, :person_id, :event_id, numericality: true
   belongs_to :person
   belongs_to :event
   belongs_to :user

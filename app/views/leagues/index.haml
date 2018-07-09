@@ -1,14 +1,14 @@
-%h1{class: 'text-center'}= "List of events:"
+%h1{class: 'text-center'}= "List of Leagues:"
 %div{class: 'table-container'}
   %table{border: 0, class: 'table table-condensed borderless'}
     %tr
       %th{class: 'ordinal'}
       %th{class: 'text-left person-name'} NAME
-    - @events.each do |event|
+    - @leagues.each do |league|
       / TODO: add winner here
       %tr
         %td{class: 'ordinal'}
-        %td{class: "text-left weight"}=link_to(event.name, event_path(event.id))
+        %td{class: "text-left weight"}=link_to(league.name, league_path(league.id))
 
 %br
 %br

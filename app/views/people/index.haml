@@ -1,10 +1,11 @@
 %h1{class: 'text-center'}= "WEIGH-IN #{@event.name}"
-%h2{class: 'text-center'}= @event.tagline
+%h2{class: 'text-center'}= "Global List"
 %div{class: 'table-container'}
   %table{border: 0, class: 'table table-condensed borderless'}
     %tr
       %th{class: 'ordinal'}
       %th{class: 'text-left person-name'} NAME
+      %th{class: 'text-left league-name'}= link_to("LEAGUE", leagues_path)
       %th{:'data-field' => 'up_by', :'data-sortable' => 'true', class: 'text-right weight'} UP BY
     - previous_score = nil
     - index = 0
@@ -22,6 +23,7 @@
         - previous_score = up_by
         %td{class: 'ordinal'}= up_by ? index : nil
         %td{class: 'person-name'}= link_to(person.name.upcase, person_path(person))
+        %td{class: 'league-name'}= link_to(person.league.name, league_path(person.league.id))
         - percent_text = up_by && percentage_change ? "(#{percentage_change.round(2)}%)" : ""
         %td{class: "#{positive} text-right weight"}= "#{up_by.try(:round, 3)} #{percent_text}"
 
@@ -30,5 +32,4 @@
 %br
 %br
 %br
-= link_to('OTHER EVENTS', events_path)
 = link_to('CHECK IN', new_checkin_path, class: 'btn btn-default btn-block navbar navbar-fixed-bottom button-link') unless ENV['QUIET_MODE']

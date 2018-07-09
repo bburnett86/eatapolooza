@@ -1,18 +1,22 @@
 class Person < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, :league_id, presence: true
 
   has_many :checkins
   has_many :user_person_joins
   has_many :users, through: :user_person_joins
   belongs_to :league
 
-  def up_by(event=nil)
-    return attributes['up_by'] unless event
-    checkins_from_event = event.checkins.where(person: self).order(:created_at)
-    @starting_weight = checkins_from_event.first.weight
-    puts @starting_weight.to_f
-    first_checkin = checkins_from_event.first
-    last_checkin = checkins_from_event.last
+  def up_by(event_league)
+    if event_league.class.name == "Event"
+      checkins_from_params = event_league.checkins.where(person: self).order(:created_at)
+    elsif event_league.class.name == "League"
+      checkins_from_params = event_league.people.where(person: self).order(:created_at).checkins
+    else
+      return attributes['up_by']
+    end
+    @starting_weight = checkins_from_params.first.weight
+    first_checkin = checkins_from_params.first
+    last_checkin = checkins_from_params.last
     @up_by = last_checkin == first_checkin ? nil : last_checkin.weight - first_checkin.weight
     return @up_by
   end
@@ -37,6 +41,8 @@ class Person < ActiveRecord::Base
     people_strings[1..-1].each do |line|
       attrs = line.split(",")
       person = Person.find_or_create_by(name: attrs[0])
+      person.update!(league_id: rand(1..6))
+      person.save
     end
   end
 end
